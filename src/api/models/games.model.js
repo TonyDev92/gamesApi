@@ -9,6 +9,7 @@ const gameSchema = new Schema(
         developer: {type:String, required: true},
         publisher: {type:String, required:true},   
         image: {type:String , required: false}
+        
     },{
         timestamps:true
     }
