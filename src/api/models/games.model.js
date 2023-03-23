@@ -7,7 +7,7 @@ const gameSchema = new Schema(
         genre: {type:String , required: true},
         short_description: {type: String, required: true},
         releaseDate: {type:String , required: true},
-        developer: {type:String, required: true},
+        playedInPlatform: [{type: String, required: true}],
         publisher: {type:String, required:true},   
         image: {type:String , required: false}
         
