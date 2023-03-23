@@ -4,7 +4,7 @@ const Platform = require('../models/platform.model');
 const getPlatform = async (req, res) => {
     try
     {
-        const allPlatforms = await Platform.find();
+        const allPlatforms = await Platform.find().populate("games");
 
         return res.status(200).json(allPlatforms);
     } 
