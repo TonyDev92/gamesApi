@@ -11,7 +11,7 @@ const platformSchema = new mongoose.Schema(
             memory: {type: String, required: true},
             resolution: {type: String, required: true}
         }],
-        games: [{type: Schema.Types.ObjectId, ref: 'games'}]
+        games: [{type: mongoose.Types.ObjectId, ref: 'games'}]
     },{
         timestamps:true
     }

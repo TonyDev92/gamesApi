@@ -19,9 +19,9 @@ const getPlatformById = async (req, res) => {
     try
     {
         const { id } = req.params;
-        const platform = await Platform.findById(id).populate('game');
+        const platform = await Platform.findById(id).populate("games"); //Referencia al modelo Game Línea 19
 
-        !platform ? res.status(200).json({'message': 'Platform not found.'}) : res.status(200).json(platform);
+        !platform ? res.status(404).json({'message': 'Platform not found.'}) : res.status(200).json(platform);
     } 
     catch(error) 
     {
@@ -37,9 +37,9 @@ const putPlatform = async (req, res) => {
         const putPlatform = new Platform(req.body);
         putPlatform._id = id;
 
-        const updatedPlatform = await Platform.findByIdAndUpdate(id, putPlatform, {new: true});
+        const updatedPlatform = await Platform.findByIdAndUpdate(id, putPlatform,{$push:{games:gamesId}}, {new: true});
 
-        !updatedPlatform ? res.status(200).json({'message': 'Platform not found to update.'}) : res.status(200).json(updatedPlatform);
+        !updatedPlatform ? res.status(404).json({'message': 'Platform not found to update.'}) : res.status(200).json(updatedPlatform);
     } 
     catch(error) 
     {
@@ -69,7 +69,7 @@ const deletePlatform = async (req, res) => {
         const { id } = req.params;
         const deletedPlatform = await Platform.findByIdAndDelete(id);
 
-        !deletedPlatform ? res.status(200).json({'message': 'Platform not found to delete.'}) : res.status(200).json(deletedPlatform);
+        !deletedPlatform ? res.status(404).json({'message': 'Platform not found to delete.'}) : res.status(200).json(deletedPlatform);
     } 
     catch(error) 
     {
