@@ -1,3 +1,4 @@
+const { deleteFile } = require("../../middleware/delete");
 const Game = require("../models/games.model");
 
 //GET
@@ -64,17 +65,26 @@ const getGameById = async (req, res) => {
 
 //PUT
 const putGame = async (req, res) => {
+  console.log(req.file);
   try {
     const { id } = req.params;
     const putGame = new Game(req.body);
     putGame._id = id;
-    const updatedGame = await Game.findByIdAndUpdate(id, putGame, {
-      new: true,
-    });
 
-    !updatedGame
+    if (req.file) {
+      putGame.image = req.file.path;
+     } 
+
+    const updatedGame = await Game.findByIdAndUpdate(id, putGame);
+
+    if (updatedGame.image){
+      deleteFile(updatedGame.image);
+     }
+
+    return !updatedGame
       ? res.status(404).json({ message: "Game not found to be updated." })
       : res.status(200).json(updatedGame);
+
   } catch (error) {
     res.status(500).json(error);
   }
@@ -85,6 +95,8 @@ const postGame = async (req, res) => {
   try {
     const newGame = new Game(req.body);
     const createdGame = await newGame.save();
+
+    newGame.image = req.file.path;
 
     return res.status(200).json(createdGame);
   } catch (error) {
