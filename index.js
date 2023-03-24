@@ -18,10 +18,10 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET
 });
 
-// app.use(cors({
-//     origin: ["http://localhost:3000", "http://localhost:4200", "http://localhost:5000", "http://localhost:5500"],
-//     credentials: true
-// }));
+app.use(cors({
+    origin: ["http://localhost:3000", "http://localhost:4200", "http://localhost:5000", "http://localhost:5500"],
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
