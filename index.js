@@ -19,7 +19,7 @@ cloudinary.config({
 });
 
 app.use(cors({
-    origin: ["http://localhost:3000", "http://localhost:4200", "http://localhost:5000", "http://localhost:5500" ,"https://games-api-lyart.vercel.app/"],
+    origin: ["http://localhost:3000", "http://localhost:4200", "http://localhost:5000", "http://localhost:5500" ,"https://games-api-lyart.vercel.app/", "https://games-api-git-main-tonydev92.vercel.app/"],
     credentials: true
 }));
 
