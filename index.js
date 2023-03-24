@@ -18,10 +18,10 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET
 });
 
-app.use(cors({
-    origin: ["http://localhost:3000", "http://localhost:4200", "http://localhost:5000", "http://localhost:5500" ,"https://games-api-lyart.vercel.app/", "https://games-api-git-main-tonydev92.vercel.app/"],
-    credentials: true
-}));
+// app.use(cors({
+//     origin: ["http://localhost:3000", "http://localhost:4200", "http://localhost:5000", "http://localhost:5500"],
+//     credentials: true
+// }));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
