@@ -73,13 +73,13 @@ const putGame = async (req, res) => {
 
     if (req.file) {
       putGame.image = req.file.path;
-     } 
+    } 
 
     const updatedGame = await Game.findByIdAndUpdate(id, putGame);
 
     if (updatedGame.image){
       deleteFile(updatedGame.image);
-     }
+    }
 
     return !updatedGame
       ? res.status(404).json({ message: "Game not found to be updated." })
