@@ -17,9 +17,9 @@ cloudinary.config({
     api_key: process.env.CLOUDINARY_KEY,
     api_secret: process.env.CLOUDINARY_SECRET
 });
-
+// ["http://localhost:3000", "http://localhost:4200", "http://localhost:5000", "http://localhost:5500"],
 app.use(cors({
-    origin: ["http://localhost:3000", "http://localhost:4200", "http://localhost:5000", "http://localhost:5500"],
+    origin: "*",
     credentials: true
 }));
 
